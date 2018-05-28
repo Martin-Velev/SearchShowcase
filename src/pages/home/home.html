@@ -10,7 +10,7 @@
   <ion-list >
     <ion-item *ngFor="let list of lists">
       <ion-item >
-        <button (click)="sort(list.sortMethod)" ion-button item-start>
+        <button [disabled]="isSorting" (click)="sort(list.sortMethod)" ion-button item-start>
           {{list.sortMethod}}
         </button>
         <button (click)="disorderList(list)" ion-button item-start>
