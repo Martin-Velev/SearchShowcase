@@ -57,13 +57,9 @@ export class HomePage {
   insertionSort = (list: number[]) => {
     let i = this.sortIndexies['Insertion sort']
     let value = list[i]
-    // store the current item value so it can be placed right
     for (var j = i - 1; j > -1 && list[j] > value; j--) {
-      // loop through the list in the sorted array (the list from the current to the beginning)
-      // copy each item to the next one
       list[j + 1] = list[j]
     }
-    // the last item we've reached should now hold the value of the currently sorted item
     list[j + 1] = value
   }
 
