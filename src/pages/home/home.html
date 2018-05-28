@@ -1,14 +1,46 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Search algorythms showcase
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <ion-list >
+    <ion-item *ngFor="let list of lists">
+      <ion-item >
+        <button (click)="sort(list.sortMethod)" ion-button item-start>
+          {{list.sortMethod}}
+        </button>
+        <button (click)="disorderList(list)" ion-button item-start>
+          Generate List
+        </button>
+      </ion-item >
+
+      <p>
+        [<span *ngFor="let num of list.array"> {{num}}, </span>]
+      </p>
+    </ion-item>
+  </ion-list >
+  <ion-label>Change the delay between sort steps:</ion-label>
+  <ion-label>({{intervalLength}})</ion-label>
+  <ion-item>
+    <ion-range min="0" max="1000" [(ngModel)]="intervalLength" color="secondary">
+      <ion-label range-left>No delay</ion-label>
+      <ion-label range-right>1 second</ion-label>
+    </ion-range>
+  </ion-item>
+
+  <ion-label>Length of array</ion-label>
+  <ion-label>({{listLength}})</ion-label>
+  <ion-label>Note: you'll need to generate the list again</ion-label>
+  <ion-item>
+    <ion-range min="3" max="50" [(ngModel)]="listLength" color="secondary">
+      <ion-label range-left>3 numbers</ion-label>
+      <ion-label range-right>50 numbers</ion-label>
+    </ion-range>
+  </ion-item>
+
+
 </ion-content>
