@@ -57,7 +57,7 @@ export class HomePage {
   insertionSort = (list: number[]) => {
     let i = this.sortIndexies['Insertion sort']
     let value = list[i]
-    for (var j = i - 1; j > -1 && list[j] > value; j--) {
+    for (let j = i - 1; j > -1 && list[j] > value; j--) {
       list[j + 1] = list[j]
     }
     list[j + 1] = value
