@@ -16,6 +16,7 @@ export class HomePage {
   sortIndexies: any = {};
   intervalLength: number = DEFAULT_INTERVAL;
   isSorting: boolean;
+  activeNumbers: any = {};
 
   constructor(public navCtrl: NavController) {
     this.lists = SORT_METHODS.map(sortMethod => {
@@ -28,6 +29,7 @@ export class HomePage {
 
     for (let method of SORT_METHODS) {
       this.sortIndexies[method] = 0;
+      this.activeNumbers[method] = [];
     }
 
     this.isSorting = false;
@@ -52,6 +54,7 @@ export class HomePage {
         this.sortIndexies[sortMethod] = 0;
         clearInterval(this.interval);
         this.isSorting = false;
+        this.activeNumbers[sortMethod] = [];
         return;
       } else {
         sortCallback(currentList);
@@ -64,6 +67,7 @@ export class HomePage {
     let i = this.sortIndexies['Insertion sort'];
     let value = list[i];
     let j = i - 1;
+    this.activeNumbers['Insertion sort'] = [list[j]];
     for (; j > -1 && list[j] > value; j--) {
       list[j + 1] = list[j];
     }
@@ -76,6 +80,7 @@ export class HomePage {
         let swap = list[i];
         list[i] = list[i + 1];
         list[i + 1] = swap;
+        this.activeNumbers['Bubble sort'] = [list[i], list[i + 1]];
       }
     }
   }
@@ -89,6 +94,7 @@ export class HomePage {
     this.isSorting = false;
     list.array = generateRandomList(this.listLength);
     this.sortIndexies[list.sortMethod] = 0;
+    this.activeNumbers[list.sortMethod] = [];
   }
 }
 

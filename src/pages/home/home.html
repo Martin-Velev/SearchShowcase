@@ -19,7 +19,7 @@
       </ion-item >
 
       <p>
-        [<span *ngFor="let num of list.array"> {{num}}, </span>]
+        [<span *ngFor="let num of list.array"> <span [ngStyle]="{'color': (activeNumbers[list.sortMethod].includes(num) ? 'red' : '')}"> {{num}} </span>, </span>]
       </p>
     </ion-item>
   </ion-list >
