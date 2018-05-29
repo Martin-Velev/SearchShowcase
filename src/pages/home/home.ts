@@ -67,11 +67,11 @@ export class HomePage {
     let i = this.sortIndexies['Insertion sort'];
     let value = list[i];
     let j = i - 1;
-    this.activeNumbers['Insertion sort'] = [list[j]];
     for (; j > -1 && list[j] > value; j--) {
       list[j + 1] = list[j];
     }
     list[j + 1] = value;
+    this.activeNumbers['Insertion sort'] = [value, list[i + 1]];
   }
 
   bubbleSort = (list: number[]) => {
